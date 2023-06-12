@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.user
+  models.wine
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,8 +13,8 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.user
-    .findUser(req.params.id)
+  models.wine
+    .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const user = req.body;
+  const wine = req.body;
 
   // TODO validations (length, format...)
 
-  user.id = parseInt(req.params.id, 10);
+  wine.id = parseInt(req.params.id, 10);
 
-  models.user
-    .update(user)
+  models.wine
+    .update(wine)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,14 +51,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const user = req.body;
+  const wine = req.body;
 
   // TODO validations (length, format...)
 
-  models.user
-    .insert(user)
+  models.wine
+    .insert(wine)
     .then(([result]) => {
-      res.location(`/users/${result.insertId}`).sendStatus(201);
+      res.location(`/wines/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -67,7 +67,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.user
+  models.wine
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
