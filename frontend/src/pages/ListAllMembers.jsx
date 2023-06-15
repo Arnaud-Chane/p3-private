@@ -21,8 +21,8 @@ function ListAllMembers() {
     <div className="ListAllMembers">
       {deals.map((deal) => (
         <div key={deal.user_id}>
-          <h3>{deal.last_name}</h3>
-          <p>{deal.first_name}</p>
+          <h3>{deal.lastname}</h3>
+          <p>{deal.firstname}</p>
         </div>
       ))}
     </div>
