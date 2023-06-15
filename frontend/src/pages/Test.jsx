@@ -26,7 +26,7 @@ export default function Test() {
       <Box sx={{ width: 300 }}>
         <Slider
           aria-label="Temperature"
-          defaultValue={sliderValue}
+          defaultValue={0}
           getAriaValueText={valuetext}
           valueLabelDisplay="auto"
           onChange={handleChangeSlider}
@@ -35,10 +35,7 @@ export default function Test() {
           min={0}
           max={100}
         />
-        <button
-          type="submit"
-          // onClick={() => console.log(sliderValue)}
-        >
+        <button type="submit" onClick={() => console.error(sliderValue)}>
           {" "}
           test{" "}
         </button>
@@ -51,10 +48,7 @@ export default function Test() {
             name="simple-controlled"
             value={parseInt(ratingValue, 2)}
           />
-          <button
-            type="submit"
-            // onClick={() => console.log(ratingValue)}
-          >
+          <button type="submit" onClick={() => console.error(ratingValue)}>
             {" "}
             test{" "}
           </button>
